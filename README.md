@@ -1,2 +1,2 @@
 # TallerHilosJava
-Taller para desarrollar actividad en base a Hilos e interfaz de usuario
+Repositorio para desarrollar taller usando hilos y GUI en java
