@@ -7,6 +7,7 @@ import Modelo.reloj;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class game extends JFrame {
     private Juego jUno;
@@ -68,15 +69,15 @@ public class game extends JFrame {
     private JLabel jlPichesScores5;
     private JLabel jlProgressOne;
     private JLabel jlProgressFive;
-    private  JLabel jlProgress1;
-    private  JLabel jlProgress2;
-    private  JLabel jlProgress3;
-    private  JLabel jlProgress4;
-    private  JLabel jlProgress5;
+    private JLabel jlProgress1;
+    private JLabel jlProgress2;
+    private JLabel jlProgress3;
+    private JLabel jlProgress4;
+    private JLabel jlProgress5;
 
     private Control control = new Control();
 
-    public game(){
+    public game() {
 
         setTitle("Rapidos y Furiosos");
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -86,7 +87,7 @@ public class game extends JFrame {
         setLayout(new GridBagLayout());
 
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(300,300,300,300);
+        gbc.insets = new Insets(500, 500, 500, 500);
         //add(panelJuego());
 
         imgLogo = new ImageIcon("src\\Recursos\\rapidosFuriosos.png");
@@ -94,12 +95,11 @@ public class game extends JFrame {
         beguinJugadores();
 
 
-
         //fill();
 
     }
 
-    private void beguinJugadores (){
+    private void beguinJugadores() {
 
         //-------------------------------------------------------------------------------
 
@@ -121,91 +121,92 @@ public class game extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 2;
         gbc.gridwidth = 1;
-        add( jlNameOne, gbc);
+        add(jlNameOne, gbc);
 
         jlName1 = new JLabel();
         gbc.gridx = 1;
         gbc.gridy = 2;
         gbc.gridwidth = 1;
-        add( jlName1, gbc);
+        add(jlName1, gbc);
 
         JLabel jlUbicacionOne = new JLabel("Ubicacion: ");
         gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.gridwidth = 1;
-        add( jlUbicacionOne, gbc);
+        add(jlUbicacionOne, gbc);
 
         jlUbicacion1 = new JLabel();
         gbc.gridx = 1;
         gbc.gridy = 3;
         gbc.gridwidth = 1;
-        add( jlUbicacion1, gbc);
+        add(jlUbicacion1, gbc);
 
         JLabel jlHourOne = new JLabel("Hora: ");
         gbc.gridx = 0;
         gbc.gridy = 4;
         gbc.gridwidth = 1;
-        add( jlHourOne, gbc);
+        add(jlHourOne, gbc);
 
         jlHour1 = new JLabel();
         gbc.gridx = 1;
         gbc.gridy = 4;
         gbc.gridwidth = 1;
-        add( jlHour1, gbc);
+        add(jlHour1, gbc);
 
         JLabel jlNumberGamesOne = new JLabel("Numero partida: ");
         gbc.gridx = 0;
         gbc.gridy = 5;
         gbc.gridwidth = 1;
-        add( jlNumberGamesOne, gbc);
+        add(jlNumberGamesOne, gbc);
 
         jlNumberGames1 = new JLabel();
         gbc.gridx = 1;
         gbc.gridy = 5;
         gbc.gridwidth = 1;
-        add( jlNumberGames1, gbc);
+        add(jlNumberGames1, gbc);
 
         JLabel jlNumberPichesOne = new JLabel("Puntaje lanzamiento:");
         gbc.gridx = 0;
         gbc.gridy = 6;
         gbc.gridwidth = 1;
-        add( jlNumberPichesOne, gbc);
+        add(jlNumberPichesOne, gbc);
 
         jlNumberPiches1 = new JLabel();
         gbc.gridx = 1;
         gbc.gridy = 6;
         gbc.gridwidth = 1;
-        add( jlNumberPiches1, gbc);
+        add(jlNumberPiches1, gbc);
 
         JLabel jlPichesScoresOne = new JLabel("Puntaje acumulado");
         gbc.gridx = 0;
         gbc.gridy = 7;
         gbc.gridwidth = 1;
-        add( jlPichesScoresOne, gbc);
+        add(jlPichesScoresOne, gbc);
 
         jlPichesScores1 = new JLabel();
         gbc.gridx = 1;
         gbc.gridy = 7;
         gbc.gridwidth = 1;
-        add( jlPichesScores1, gbc);
+        add(jlPichesScores1, gbc);
 
 
         jlProgressOne = new JLabel("Puntaje restante");
         gbc.gridx = 0;
         gbc.gridy = 8;
         gbc.gridwidth = 1;
-        add( jlProgressOne, gbc);
+        add(jlProgressOne, gbc);
 
         jlProgress1 = new JLabel();
         gbc.gridx = 1;
         gbc.gridy = 8;
         gbc.gridwidth = 1;
-        add( jlProgress1, gbc);
+        add(jlProgress1, gbc);
 
         //-----------------------------------------------------------------------------------------------
 
-        Jugador playerUno = new Jugador(control.seleccionNombre(),control.seleccionUbicacion());
-        jUno = new Juego(playerUno,jlName1,jlUbicacion1,jlNumberPiches1,jlPichesScores1,jlProgress1);
+        Jugador playerUno = new Jugador(control.seleccionNombre(), control.seleccionUbicacion());
+        jUno = new Juego(playerUno, jlName1, jlUbicacion1, jlNumberPiches1,
+                jlPichesScores1, jlProgress1);
         Thread th1 = new Thread(jUno);
         th1.start();
 
@@ -225,91 +226,92 @@ public class game extends JFrame {
         gbc.gridx = 2;
         gbc.gridy = 2;
         gbc.gridwidth = 1;
-        add( jlNameTwo, gbc);
+        add(jlNameTwo, gbc);
 
         jlName2 = new JLabel();
         gbc.gridx = 3;
         gbc.gridy = 2;
         gbc.gridwidth = 1;
-        add( jlName2, gbc);
+        add(jlName2, gbc);
 
         JLabel jlUbicacionTwo = new JLabel("Ubicacion: ");
         gbc.gridx = 2;
         gbc.gridy = 3;
         gbc.gridwidth = 1;
-        add( jlUbicacionTwo, gbc);
+        add(jlUbicacionTwo, gbc);
 
         jlUbicacion2 = new JLabel();
         gbc.gridx = 3;
         gbc.gridy = 3;
         gbc.gridwidth = 1;
-        add( jlUbicacion2, gbc);
+        add(jlUbicacion2, gbc);
 
         JLabel jlHourTwo = new JLabel("Hora: ");
         gbc.gridx = 2;
         gbc.gridy = 4;
         gbc.gridwidth = 1;
-        add( jlHourTwo, gbc);
+        add(jlHourTwo, gbc);
 
         jlHour2 = new JLabel();
         gbc.gridx = 3;
         gbc.gridy = 4;
         gbc.gridwidth = 1;
-        add( jlHour2, gbc);
+        add(jlHour2, gbc);
 
         JLabel jlNumberGamesTwo = new JLabel("Numero partida: ");
         gbc.gridx = 2;
         gbc.gridy = 5;
         gbc.gridwidth = 1;
-        add( jlNumberGamesTwo, gbc);
+        add(jlNumberGamesTwo, gbc);
 
         jlNumberGames2 = new JLabel();
         gbc.gridx = 3;
         gbc.gridy = 5;
         gbc.gridwidth = 1;
-        add( jlNumberGames2, gbc);
+        add(jlNumberGames2, gbc);
 
         JLabel jlNumberPichesTwo = new JLabel("Puntaje lanzamiento:");
         gbc.gridx = 2;
         gbc.gridy = 6;
         gbc.gridwidth = 1;
-        add( jlNumberPichesTwo, gbc);
+        add(jlNumberPichesTwo, gbc);
 
         jlNumberPiches2 = new JLabel();
         gbc.gridx = 3;
         gbc.gridy = 6;
         gbc.gridwidth = 1;
-        add( jlNumberPiches2, gbc);
+        add(jlNumberPiches2, gbc);
 
         JLabel jlPichesScoresTwo = new JLabel("Puntaje acumulado");
         gbc.gridx = 2;
         gbc.gridy = 7;
         gbc.gridwidth = 1;
-        add( jlPichesScoresTwo, gbc);
+        add(jlPichesScoresTwo, gbc);
 
         jlPichesScores2 = new JLabel();
         gbc.gridx = 3;
         gbc.gridy = 7;
         gbc.gridwidth = 1;
-        add( jlPichesScores2, gbc);
+        add(jlPichesScores2, gbc);
 
 
         JLabel jlProgressTwo = new JLabel("Puntaje restante");
         gbc.gridx = 2;
         gbc.gridy = 8;
         gbc.gridwidth = 1;
-        add( jlProgressTwo, gbc);
+        add(jlProgressTwo, gbc);
 
         jlProgress2 = new JLabel();
         gbc.gridx = 3;
         gbc.gridy = 8;
         gbc.gridwidth = 1;
-        add( jlProgress2, gbc);
+        add(jlProgress2, gbc);
 
         //-----------------------------------------------------------------------------------------------
 
-        Jugador playerTwo = new Jugador(control.seleccionNombre(),control.seleccionUbicacion());
-        jDos = new Juego(playerTwo,jlName2,jlUbicacion2,jlNumberPiches2,jlPichesScores2,jlProgress2);
+        Jugador playerTwo = new Jugador(control.seleccionNombre(), control.seleccionUbicacion());
+        jDos = new Juego(playerTwo, jlName2, jlUbicacion2,
+                jlNumberPiches2, jlPichesScores2, jlProgress2);
         Thread th2 = new Thread(jDos);
         th2.start();
 
@@ -330,97 +332,99 @@ public class game extends JFrame {
         gbc.gridx = 4;
         gbc.gridy = 2;
         gbc.gridwidth = 1;
-        add( jlNameThree, gbc);
+        add(jlNameThree, gbc);
 
         jlName3 = new JLabel();
         gbc.gridx = 5;
         gbc.gridy = 2;
         gbc.gridwidth = 1;
-        add( jlName3, gbc);
+        add(jlName3, gbc);
 
         JLabel jlUbicacionThree = new JLabel("Ubicacion: ");
         gbc.gridx = 4;
         gbc.gridy = 3;
         gbc.gridwidth = 1;
-        add( jlUbicacionThree, gbc);
+        add(jlUbicacionThree, gbc);
 
         jlUbicacion3 = new JLabel();
         gbc.gridx = 5;
         gbc.gridy = 3;
         gbc.gridwidth = 1;
-        add( jlUbicacion3, gbc);
+        add(jlUbicacion3, gbc);
 
         JLabel jlHourThree = new JLabel("Hora: ");
         gbc.gridx = 4;
         gbc.gridy = 4;
         gbc.gridwidth = 1;
-        add( jlHourThree, gbc);
+        add(jlHourThree, gbc);
 
         jlHour3 = new JLabel();
         gbc.gridx = 5;
         gbc.gridy = 4;
         gbc.gridwidth = 1;
-        add( jlHour3, gbc);
+        add(jlHour3, gbc);
 
         JLabel jlNumberGamesThree = new JLabel("Numero partida: ");
         gbc.gridx = 4;
         gbc.gridy = 5;
         gbc.gridwidth = 1;
-        add( jlNumberGamesThree, gbc);
+        add(jlNumberGamesThree, gbc);
 
         jlNumberGames3 = new JLabel();
         gbc.gridx = 5;
         gbc.gridy = 5;
         gbc.gridwidth = 1;
-        add( jlNumberGames3, gbc);
+        add(jlNumberGames3, gbc);
 
         JLabel jlNumberPichesThree = new JLabel("Puntaje lanzamiento:");
         gbc.gridx = 4;
         gbc.gridy = 6;
         gbc.gridwidth = 1;
-        add( jlNumberPichesThree, gbc);
+        add(jlNumberPichesThree, gbc);
 
         jlNumberPiches3 = new JLabel();
         gbc.gridx = 5;
         gbc.gridy = 6;
         gbc.gridwidth = 1;
-        add( jlNumberPiches3, gbc);
+        add(jlNumberPiches3, gbc);
 
         JLabel jlPichesScoresThree = new JLabel("Puntaje acumulado");
         gbc.gridx = 4;
         gbc.gridy = 7;
         gbc.gridwidth = 1;
-        add( jlPichesScoresThree, gbc);
+        add(jlPichesScoresThree, gbc);
 
         jlPichesScores3 = new JLabel();
         gbc.gridx = 5;
         gbc.gridy = 7;
         gbc.gridwidth = 1;
-        add( jlPichesScores3, gbc);
+        add(jlPichesScores3, gbc);
 
 
         JLabel jlProgressThree = new JLabel("Puntaje restante");
         gbc.gridx = 4;
         gbc.gridy = 8;
         gbc.gridwidth = 1;
-        add( jlProgressThree, gbc);
+        add(jlProgressThree, gbc);
 
         jlProgress3 = new JLabel();
         gbc.gridx = 5;
         gbc.gridy = 8;
         gbc.gridwidth = 1;
-        add( jlProgress3, gbc);
+        add(jlProgress3, gbc);
 
         //-----------------------------------------------------------------------------------------------
 
-        Jugador playerThree = new Jugador(control.seleccionNombre(),control.seleccionUbicacion());
-        jTres = new Juego(playerThree,jlName3,jlUbicacion3,jlNumberPiches3,jlPichesScores3,jlProgress3);
+        Jugador playerThree = new Jugador(control.seleccionNombre(), control.seleccionUbicacion());
+        jTres = new Juego(playerThree, jlName3, jlUbicacion3,
+                jlNumberPiches3, jlPichesScores3, jlProgress3);
         Thread th3 = new Thread(jTres);
         th3.start();
 
         reloj r3 = new reloj(playerUno.getUbicacion(), jlHour3);
         Thread th33 = new Thread(r3);
         th33.start();
+
 
         //JUGADOR 4-----------------------------------------------------------------------------
 
@@ -434,96 +438,98 @@ public class game extends JFrame {
         gbc.gridx = 6;
         gbc.gridy = 2;
         gbc.gridwidth = 1;
-        add( jlNameFour, gbc);
+        add(jlNameFour, gbc);
 
         jlName4 = new JLabel();
         gbc.gridx = 7;
         gbc.gridy = 2;
         gbc.gridwidth = 1;
-        add( jlName4, gbc);
+        add(jlName4, gbc);
 
         JLabel jlUbicacionFour = new JLabel("Ubicacion: ");
         gbc.gridx = 6;
         gbc.gridy = 3;
         gbc.gridwidth = 1;
-        add( jlUbicacionFour, gbc);
+        add(jlUbicacionFour, gbc);
 
         jlUbicacion4 = new JLabel();
         gbc.gridx = 7;
         gbc.gridy = 3;
         gbc.gridwidth = 1;
-        add( jlUbicacion4, gbc);
+        add(jlUbicacion4, gbc);
 
         JLabel jlHourFour = new JLabel("Hora: ");
         gbc.gridx = 6;
         gbc.gridy = 4;
         gbc.gridwidth = 1;
-        add( jlHourFour, gbc);
+        add(jlHourFour, gbc);
 
         jlHour4 = new JLabel();
         gbc.gridx = 7;
         gbc.gridy = 4;
         gbc.gridwidth = 1;
-        add( jlHour4, gbc);
+        add(jlHour4, gbc);
 
         JLabel jlNumberGamesFour = new JLabel("Numero partida: ");
         gbc.gridx = 6;
         gbc.gridy = 5;
         gbc.gridwidth = 1;
-        add( jlNumberGamesFour, gbc);
+        add(jlNumberGamesFour, gbc);
 
         jlNumberGames4 = new JLabel();
         gbc.gridx = 7;
         gbc.gridy = 5;
         gbc.gridwidth = 1;
-        add( jlNumberGames4, gbc);
+        add(jlNumberGames4, gbc);
 
         JLabel jlNumberPichesFour = new JLabel("Puntaje lanzamiento:");
         gbc.gridx = 6;
         gbc.gridy = 6;
         gbc.gridwidth = 1;
-        add( jlNumberPichesFour, gbc);
+        add(jlNumberPichesFour, gbc);
 
         jlNumberPiches4 = new JLabel();
         gbc.gridx = 7;
         gbc.gridy = 6;
         gbc.gridwidth = 1;
-        add( jlNumberPiches4,gbc);
+        add(jlNumberPiches4, gbc);
 
         JLabel jlPichesScoresFour = new JLabel("Puntaje acumulado");
         gbc.gridx = 6;
         gbc.gridy = 7;
         gbc.gridwidth = 1;
-        add( jlPichesScoresFour, gbc);
+        add(jlPichesScoresFour, gbc);
 
         jlPichesScores4 = new JLabel();
         gbc.gridx = 7;
         gbc.gridy = 7;
         gbc.gridwidth = 1;
-        add( jlPichesScores4, gbc);
+        add(jlPichesScores4, gbc);
 
         JLabel jlProgressFour = new JLabel("Puntaje restante");
         gbc.gridx = 6;
         gbc.gridy = 8;
         gbc.gridwidth = 1;
-        add( jlProgressFour, gbc);
+        add(jlProgressFour, gbc);
 
         jlProgress4 = new JLabel();
         gbc.gridx = 7;
         gbc.gridy = 8;
         gbc.gridwidth = 1;
-        add( jlProgress4, gbc);
+        add(jlProgress4, gbc);
 
         //-----------------------------------------------------------------------------------------------
 
-        Jugador playerFour = new Jugador(control.seleccionNombre(),control.seleccionUbicacion());
-        jCuatro = new Juego(playerFour,jlName4,jlUbicacion4,jlNumberPiches4,jlPichesScores4,jlProgress4);
+        Jugador playerFour = new Jugador(control.seleccionNombre(), control.seleccionUbicacion());
+        jCuatro = new Juego(playerFour, jlName4, jlUbicacion4,
+                jlNumberPiches4, jlPichesScores4, jlProgress4);
         Thread th4 = new Thread(jCuatro);
         th4.start();
 
         reloj r4 = new reloj(playerUno.getUbicacion(), jlHour4);
         Thread th44 = new Thread(r4);
         th44.start();
+
 
         //JUGADOR 5 -----------------------------------------------------------------------------
 
@@ -537,90 +543,91 @@ public class game extends JFrame {
         gbc.gridx = 8;
         gbc.gridy = 2;
         gbc.gridwidth = 1;
-        add( jlNameFive, gbc);
+        add(jlNameFive, gbc);
 
         jlName5 = new JLabel();
         gbc.gridx = 9;
         gbc.gridy = 2;
         gbc.gridwidth = 1;
-        add( jlName5, gbc);
+        add(jlName5, gbc);
 
         JLabel jlUbicacionFive = new JLabel("Ubicacion: ");
         gbc.gridx = 8;
         gbc.gridy = 3;
         gbc.gridwidth = 1;
-        add( jlUbicacionFive, gbc);
+        add(jlUbicacionFive, gbc);
 
         jlUbicacion5 = new JLabel();
         gbc.gridx = 9;
         gbc.gridy = 3;
         gbc.gridwidth = 1;
-        add( jlUbicacion5, gbc);
+        add(jlUbicacion5, gbc);
 
         JLabel jlHourFive = new JLabel("Hora: ");
         gbc.gridx = 8;
         gbc.gridy = 4;
         gbc.gridwidth = 1;
-        add( jlHourFive, gbc);
+        add(jlHourFive, gbc);
 
         jlHour5 = new JLabel();
         gbc.gridx = 9;
         gbc.gridy = 4;
         gbc.gridwidth = 1;
-        add( jlHour5, gbc);
+        add(jlHour5, gbc);
 
         JLabel jlNumberGamesFive = new JLabel("Numero partida: ");
         gbc.gridx = 8;
         gbc.gridy = 5;
         gbc.gridwidth = 1;
-        add( jlNumberGamesFive, gbc);
+        add(jlNumberGamesFive, gbc);
 
         jlNumberGames5 = new JLabel();
         gbc.gridx = 9;
         gbc.gridy = 5;
         gbc.gridwidth = 1;
-        add( jlNumberGames5, gbc);
+        add(jlNumberGames5, gbc);
 
         JLabel jlNumberPichesFive = new JLabel("Puntaje lanzamiento:");
         gbc.gridx = 8;
         gbc.gridy = 6;
         gbc.gridwidth = 1;
-        add( jlNumberPichesFive, gbc);
+        add(jlNumberPichesFive, gbc);
 
         jlNumberPiches5 = new JLabel();
         gbc.gridx = 9;
         gbc.gridy = 6;
         gbc.gridwidth = 1;
-        add( jlNumberPiches5,gbc);
+        add(jlNumberPiches5, gbc);
 
         JLabel jlPichesScoresFive = new JLabel("Puntaje acumulado");
         gbc.gridx = 8;
         gbc.gridy = 7;
         gbc.gridwidth = 1;
-        add( jlPichesScoresFive, gbc);
+        add(jlPichesScoresFive, gbc);
 
         jlPichesScores5 = new JLabel();
         gbc.gridx = 9;
         gbc.gridy = 7;
         gbc.gridwidth = 1;
-        add( jlPichesScores5, gbc);
+        add(jlPichesScores5, gbc);
 
         jlProgressFive = new JLabel("Puntaje restante");
         gbc.gridx = 8;
         gbc.gridy = 8;
         gbc.gridwidth = 1;
-        add( jlProgressFive, gbc);
+        add(jlProgressFive, gbc);
 
         jlProgress5 = new JLabel();
         gbc.gridx = 9;
         gbc.gridy = 8;
         gbc.gridwidth = 1;
-        add( jlProgress5, gbc);
+        add(jlProgress5, gbc);
 
         //-----------------------------------------------------------------------------------------------
 
-        Jugador playerFive = new Jugador(control.seleccionNombre(),control.seleccionUbicacion());
-        jCinco = new Juego(playerFive,jlName5,jlUbicacion5,jlNumberPiches5,jlPichesScores5,jlProgress5);
+        Jugador playerFive = new Jugador(control.seleccionNombre(), control.seleccionUbicacion());
+        jCinco = new Juego(playerFive, jlName5, jlUbicacion5,
+                jlNumberPiches5, jlPichesScores5, jlProgress5);
         Thread th5 = new Thread(jCinco);
         th5.start();
 
@@ -629,24 +636,13 @@ public class game extends JFrame {
         th55.start();
 
     }
-    /*private void evaluar(){
-        if (jUno.getPuntosLanzamiento()>jDos.getPuntosLanzamiento()){
-            System.out.println("JUGADOR UNO MAYOR");
-        }else if (jUno.getPuntosLanzamiento()> jTres.getPuntosLanzamiento()){
-            System.out.println("JUGADOR UNO MAYOR");
-        }else if (jUno.getPuntosLanzamiento()> jCuatro.getPuntosLanzamiento()){
-            System.out.println("JUGADOR UNO MAYOR");
-        } else if (jUno.getPuntosLanzamiento()>jCinco.getPuntosLanzamiento()) {
-            System.out.println("JUGADOR UNO MAYOR");
-        }
-    }*/
 
 
-    public void fill(){
+    public void fill() {
 
         int counter = 0;
 
-        while (counter <= 100){
+        while (counter <= 100) {
 
             jpbPuntajeOne.setValue(counter);
             try {
@@ -654,9 +650,8 @@ public class game extends JFrame {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            counter+=10;
+            counter += 10;
         }
 
     }
-
 }

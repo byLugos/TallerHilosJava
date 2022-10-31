@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class DAOUbiJugador {
 
-    private String Ruta = "TallerHilosJava\\ProyectoPruebaGUI\\ProyectoPruebaGUI\\src\\Utilidades\\datosUbicacion.txt";
+    private String Ruta = "ProyectoPruebaGUI\\src\\Utilidades\\datosUbicacion.txt";
 
     public ArrayList<String> obtenerUbicaciones() {
 

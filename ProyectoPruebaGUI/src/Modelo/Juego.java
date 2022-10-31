@@ -7,10 +7,9 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Juego implements Runnable{
-
+public class Juego implements Runnable {
     private Jugador jugadorsito;
-    private int numPartidas ;
+    private int numPartidas;
     private int puntaje;
     private int puntosLanzamiento;
     private int sumaPuntaje;
@@ -20,7 +19,7 @@ public class Juego implements Runnable{
     int puntajeInicial = 100;
     int puntos = 0;
     private JLabel jlNombre;
-    private JLabel jlUbicacion ;
+    private JLabel jlUbicacion;
     private JLabel jlPuntosLanzamiento;
     private JLabel jlSumaPuntaje;
     private JLabel jlPuntajeRestante;
@@ -30,7 +29,8 @@ public class Juego implements Runnable{
     //private ArrayList<String> ubicaciones;
     private ArrayList<Jugador> listaJugadores;
 
-    public Juego(Jugador jugador, JLabel nombre, JLabel ubicacion, JLabel puntosLanzamiento, JLabel sumaPuntaje, JLabel puntajeRestante) {
+    public Juego(Jugador jugador, JLabel nombre, JLabel ubicacion,
+                 JLabel puntosLanzamiento, JLabel sumaPuntaje, JLabel puntajeRestante) {
 
         this.jugadorsito = jugador;
         this.jlNombre = nombre;
@@ -45,11 +45,11 @@ public class Juego implements Runnable{
 
     public Juego(Jugador player) {
         control = new Control();
-        jugadorsito = new Jugador(control.seleccionNombre(),control.seleccionUbicacion());
+        jugadorsito = new Jugador(control.seleccionNombre(), control.seleccionUbicacion());
         datosJuego();
     }
 
-    private void datosJuego(){
+    private void datosJuego() {
 
         ArrayList<String> datosjuego = new DAOJuego().obtenerDatosJuego();
 
@@ -64,29 +64,27 @@ public class Juego implements Runnable{
 
     @Override
     public void run() {
-        int restante=100;
-        while (sumaPuntaje<puntaje) {
+        int restante = 100;
+        while (sumaPuntaje < puntaje) {
             lanzamientoDados();
-            System.out.println("Nombre: " + jugadorsito.getNombre() + " Ubicacion: " + jugadorsito.getUbicacion() + " dado uno " + dadoUno +" dado dos " + dadoDos + " puntaje dados " + puntosLanzamiento + " cumulo puntaje " + sumaPuntaje);
+            System.out.println("Nombre: " + jugadorsito.getNombre() + " Ubicacion: " + jugadorsito.getUbicacion() + " dado uno " + dadoUno + " dado dos " + dadoDos + " puntaje dados " + puntosLanzamiento + " cumulo puntaje " + sumaPuntaje);
             jlNombre.setText(jugadorsito.getNombre());
             jlUbicacion.setText(jugadorsito.getUbicacion());
             jlPuntosLanzamiento.setText(String.valueOf(puntosLanzamiento));
             jlSumaPuntaje.setText(String.valueOf(sumaPuntaje));
             restante = restante - puntosLanzamiento;
-            if (sumaPuntaje>=100){
-                sumaPuntaje=puntaje;
-                restante=0;
+            if (sumaPuntaje >= 100) {
+                sumaPuntaje = puntaje;
+                restante = 0;
             }
             jlPuntajeRestante.setText(String.valueOf(restante));
             try {
-                Thread.sleep((long) (Math.random() * 1000) + 1100);
+                Thread.sleep((long) (Math.random() * 900) + 1100);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
-
     }
-
     private void lanzamientoDados() {
 
         dadoUno = (int) (Math.random() * 6 + 1);
@@ -97,22 +95,43 @@ public class Juego implements Runnable{
 
     }
 
-    public Jugador getJugadorsito() {return jugadorsito; }
+    public Jugador getJugadorsito() {
+        return jugadorsito;
+    }
 
-    public void setJugadorsito(Jugador jugadorsito) {this.jugadorsito = jugadorsito; }
+    public void setJugadorsito(Jugador jugadorsito) {
+        this.jugadorsito = jugadorsito;
+    }
 
-    public int getPuntosLanzamiento() {return puntosLanzamiento;}
-    public void setPuntosLanzamiento(int puntosLanzamiento) {this.puntosLanzamiento = puntosLanzamiento;}
+    public int getPuntosLanzamiento() {
+        return puntosLanzamiento;
+    }
 
-    public ArrayList<Jugador> getListaJugadores() {return listaJugadores;}
+    public void setPuntosLanzamiento(int puntosLanzamiento) {
+        this.puntosLanzamiento = puntosLanzamiento;
+    }
 
-    public void setListaJugadores(ArrayList<Jugador> listaJugadores) {this.listaJugadores = listaJugadores;}
+    public ArrayList<Jugador> getListaJugadores() {
+        return listaJugadores;
+    }
 
-    public int getSumaPuntaje() {return sumaPuntaje;}
+    public void setListaJugadores(ArrayList<Jugador> listaJugadores) {
+        this.listaJugadores = listaJugadores;
+    }
 
-    public void setSumaPuntaje(int sumaPuntaje) {this.sumaPuntaje = sumaPuntaje;}
+    public int getSumaPuntaje() {
+        return sumaPuntaje;
+    }
 
-    public int getPuntajeRestante() {return puntajeRestante;}
+    public void setSumaPuntaje(int sumaPuntaje) {
+        this.sumaPuntaje = sumaPuntaje;
+    }
 
-    public void setPuntajeRestante(int puntajeRestante) {this.puntajeRestante = puntajeRestante;}
+    public int getPuntajeRestante() {
+        return puntajeRestante;
+    }
+
+    public void setPuntajeRestante(int puntajeRestante) {
+        this.puntajeRestante = puntajeRestante;
+    }
 }
