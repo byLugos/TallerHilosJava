@@ -6,7 +6,8 @@ import java.util.*;
 
 public class reloj implements Runnable{
 
-    String hora, minutos, segundos;
+    String hora;
+    int hour,minute, second;
     JLabel jlHora;
     Calendar calendario = Calendar.getInstance();
 
@@ -20,13 +21,29 @@ public class reloj implements Runnable{
     @Override
     public void run() {
 
+        calendario.setTimeZone(TimeZone.getTimeZone(zona));
+        hour = calendario.get(Calendar.HOUR_OF_DAY);
+        minute = calendario.get(Calendar.MINUTE);
+        second = calendario.get(Calendar.SECOND);
+
         while (true){
 
-            LocalTime hour = LocalTime.now();
-            //calendario.setTimeZone(TimeZone.getTimeZone(zona));
-            jlHora.setText(hour.getHour()+":"+hour.getMinute()+":"+hour.getSecond());
-            //System.out.println("Hora: " + getHoraFormato(calendario));
-
+            if (second == 60){
+                minute++;
+                second=0;
+                System.out.println(minute + " " +second);
+            }if(minute==60){
+                minute=0;
+                hour++;
+                System.out.println(minute + " " +hour);
+            }if(hour==24){
+                hour=0;
+                System.out.println(hour);
+            }
+            second++;
+            hora = hour+":"+minute+":"+ second;
+            jlHora.setText(hora);
+            System.out.println("Hora: " + hora);
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -35,10 +52,5 @@ public class reloj implements Runnable{
 
         }
 
-    }
-
-    public String getHoraFormato(Calendar cal){
-        hora = cal.get(Calendar.HOUR_OF_DAY) + ":" + cal.get(Calendar.MINUTE) + ":" + cal.get(Calendar.SECOND);
-        return hora;
     }
 }

@@ -80,23 +80,19 @@ public class game extends JFrame {
     public game() {
 
         setTitle("Rapidos y Furiosos");
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
-        setResizable(false);
+        //setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new GridBagLayout());
 
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(500, 500, 500, 500);
+        gbc.insets = new Insets(500,500,500,500);
         //add(panelJuego());
 
-        imgLogo = new ImageIcon("src\\Recursos\\rapidosFuriosos.png");
+        imgLogo = new ImageIcon("ProyectoPruebaGUI\\src\\Recursos\\rapidosFuriosos.png");
         setIconImage(imgLogo.getImage());
         beguinJugadores();
-
-
-        //fill();
-
     }
 
     private void beguinJugadores() {
@@ -208,7 +204,7 @@ public class game extends JFrame {
         jUno = new Juego(playerUno, jlName1, jlUbicacion1, jlNumberPiches1,
                 jlPichesScores1, jlProgress1);
         Thread th1 = new Thread(jUno);
-        th1.start();
+        //th1.start();
 
         reloj r1 = new reloj(playerUno.getUbicacion(), jlHour1);
         Thread th11 = new Thread(r1);
@@ -313,10 +309,10 @@ public class game extends JFrame {
         jDos = new Juego(playerTwo, jlName2, jlUbicacion2,
                 jlNumberPiches2, jlPichesScores2, jlProgress2);
         Thread th2 = new Thread(jDos);
-        th2.start();
+        //th2.start();
 
 
-        reloj r2 = new reloj(playerUno.getUbicacion(), jlHour2);
+        reloj r2 = new reloj(playerTwo.getUbicacion(), jlHour2);
         Thread th22 = new Thread(r2);
         th22.start();
 
@@ -419,9 +415,9 @@ public class game extends JFrame {
         jTres = new Juego(playerThree, jlName3, jlUbicacion3,
                 jlNumberPiches3, jlPichesScores3, jlProgress3);
         Thread th3 = new Thread(jTres);
-        th3.start();
+        //th3.start();
 
-        reloj r3 = new reloj(playerUno.getUbicacion(), jlHour3);
+        reloj r3 = new reloj(playerThree.getUbicacion(), jlHour3);
         Thread th33 = new Thread(r3);
         th33.start();
 
@@ -524,9 +520,9 @@ public class game extends JFrame {
         jCuatro = new Juego(playerFour, jlName4, jlUbicacion4,
                 jlNumberPiches4, jlPichesScores4, jlProgress4);
         Thread th4 = new Thread(jCuatro);
-        th4.start();
+        //th4.start();
 
-        reloj r4 = new reloj(playerUno.getUbicacion(), jlHour4);
+        reloj r4 = new reloj(playerFour.getUbicacion(), jlHour4);
         Thread th44 = new Thread(r4);
         th44.start();
 
@@ -629,29 +625,27 @@ public class game extends JFrame {
         jCinco = new Juego(playerFive, jlName5, jlUbicacion5,
                 jlNumberPiches5, jlPichesScores5, jlProgress5);
         Thread th5 = new Thread(jCinco);
-        th5.start();
+        //th5.start();
 
-        reloj r5 = new reloj(playerUno.getUbicacion(), jlHour5);
+        reloj r5 = new reloj(playerFive.getUbicacion(), jlHour5);
         Thread th55 = new Thread(r5);
         th55.start();
 
-    }
+        //Boton start-----------------------------------------------------------------------------------------------------
 
-
-    public void fill() {
-
-        int counter = 0;
-
-        while (counter <= 100) {
-
-            jpbPuntajeOne.setValue(counter);
-            try {
-                Thread.sleep(50);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            counter += 10;
-        }
+        btnStart = new JButton("Start");
+        gbc.gridx = 8;
+        gbc.gridy = 10;
+        gbc.gridwidth = 2;
+        btnStart.addActionListener((e)->{
+            th1.start();
+            th2.start();
+            th3.start();
+            th4.start();
+            th5.start();
+        });
+        add( btnStart, gbc);
 
     }
+
 }
